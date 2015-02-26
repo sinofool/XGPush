@@ -15,6 +15,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import com.tencent.android.tpush.XGPushRegisterResult;
+
 public abstract class PushPlugin extends CordovaPlugin {
 
 	public static final String TAG = "PushPlugin";
@@ -130,6 +132,12 @@ public abstract class PushPlugin extends CordovaPlugin {
 		fireMessage(payloadString);
 	}
 	
+    public static void handleRegisterResult(Context context, int errorCode, XGPushRegisterResult registerMessage) {
+        if (errorCode == 0) {
+            fireMessage("javascript:XGPush.onTokenReady('"+registerMessage.getToken()+"')");
+        }
+    }
+
 	private static void fireMessage(String message) {
 		appView.sendJavascript(message);
 	}

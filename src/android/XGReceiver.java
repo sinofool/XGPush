@@ -24,6 +24,7 @@ public class XGReceiver extends XGPushBaseReceiver {
 
 	@Override
 	public void onRegisterResult(Context context, int errorCode, XGPushRegisterResult registerMessage) {
+        PushPlugin.handleRegisterResult(context, errorCode, registerMessage);
 	}
 
 	@Override

@@ -63,4 +63,7 @@ XGPush.prototype.registerAccount = function (account, success, error){
   exec(success || this.success, error || this.error, SERVICE, ACTION_REGISTER_ACCOUNT, [account]);
 }
 
+XGPush.prototype.onTokenReady = function (token) {
+}
+
 module.exports = new XGPush();
