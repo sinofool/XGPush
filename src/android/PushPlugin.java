@@ -94,9 +94,12 @@ public abstract class PushPlugin extends CordovaPlugin {
 			
 		} else if (ACTION_READY.equals(action)) {
 			this.onReady();
+		} else {
+			callbackContext.error("Unknown action " + action);
+			return false;
 		}
-		
-		return false;
+		callbackContext.success();
+		return true;
 	}
 
 	private void onReady() {
